@@ -10,9 +10,6 @@ provider "kubernetes" {
     args        = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.cluster.name]
   }
 }
-provider "helm" {
-}
-
 resource "kubernetes_namespace" "example" {
   metadata {
     name = "argo"
