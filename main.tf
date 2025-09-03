@@ -57,9 +57,6 @@ resource "helm_release" "argocd" {
   version    = "6.7.6" # <-- Phiên bản mới nhất của argo-cd helm chart
   namespace  = kubernetes_namespace.argo.metadata[0].name
 
-  values = [
-    file("${path.module}/values.yaml")
-  ]
 
   depends_on = [
     kubernetes_namespace.argo
