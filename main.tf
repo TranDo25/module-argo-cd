@@ -1,6 +1,5 @@
 
 provider "kubernetes" {
-  alias                  = "eks"
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
 
@@ -10,6 +9,7 @@ provider "kubernetes" {
     args        = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.cluster.name]
   }
 }
+
 resource "kubernetes_namespace" "example" {
   metadata {
     name = "argo"
